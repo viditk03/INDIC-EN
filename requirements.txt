@@ -1,5 +1,6 @@
 Flask
 flask-cors
+gunicorn
 torch
 transformers
 git+https://github.com/VarunGumma/IndicTransToolkit.git

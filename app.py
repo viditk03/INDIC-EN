@@ -82,6 +82,7 @@ def batch_translate(input_sentences, src_lang, tgt_lang, model, tokenizer, ip):
 
         translations += ip.postprocess_batch(generated_tokens, lang=tgt_lang)
 
+        # Free memory after each batch
         del inputs
         torch.cuda.empty_cache()
 
@@ -110,4 +111,5 @@ def translate():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    from waitress import serve  # Waitress is more memory-efficient than Flask's built-in server
+    serve(app, host="0.0.0.0", port=5000)
